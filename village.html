@@ -71,8 +71,8 @@ for(let i=-1;i<=1;i++)box(root,.13,.26,.08,glow,i*.27,2.06,1.63);
 const proxy=box(root,3.6,3.3,3.1,new THREE.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false}),0,1.4,0);clickable.push(proxy);proxy.userData.id=id;groups[id]=root;
 return root;}
 house("hq",0,-8,"#60e6e7","AI HQ",1.28);house("sales",8,-5.7,"#50dadd","Sales");house("support",9,3.5,"#f1b960","Support");house("research",-8,-5.3,"#ad85ed","Research");house("marketing",-8,4.6,"#b3e571","Marketing");
-const needleA=M("#37694e"),needleB=M("#49865d"),leafA=leafA,leafB=leafB,leafC=leafC,pebbleMat=M("#8d9890");
-function tree(x,z,s=1,type=0){const t=new THREE.Group();t.position.set(x,1.9,z);t.scale.setScalar(s);world.add(t);cyl(t,.12,.17,.83,wood,0,.42,0,7);if(type===0){for(let i=0;i<3;i++)mesh(new THREE.ConeGeometry(.71-i*.12,1.13,7),i===0?needleA:needleB,t,0,1.13+i*.39,0)}else{ball(t,.70,M("#54865b"),0,1.38,0);ball(t,.50,M("#679762"),.4,1.43,.1);ball(t,.5,M("#5d985e"),-.32,1.65,0)}}
+const needleA=M("#37694e"),needleB=M("#49865d"),leafA=M("#54865b"),leafB=M("#679762"),leafC=M("#5d985e"),pebbleMat=M("#8d9890");
+function tree(x,z,s=1,type=0){const t=new THREE.Group();t.position.set(x,1.9,z);t.scale.setScalar(s);world.add(t);cyl(t,.12,.17,.83,wood,0,.42,0,7);if(type===0){for(let i=0;i<3;i++)mesh(new THREE.ConeGeometry(.71-i*.12,1.13,7),i===0?needleA:needleB,t,0,1.13+i*.39,0)}else{ball(t,.70,leafA,0,1.38,0);ball(t,.50,leafB,.4,1.43,.1);ball(t,.5,leafC,-.32,1.65,0)}}
 for(let i=0;i<27;i++){let a=(i*2.39996),r=10.2+(i%5)*.62,x=Math.cos(a)*r,z=Math.sin(a)*r;if(Object.values(positions).some(p=>Math.hypot(p[0]-x,p[1]-z)<3.1))continue;tree(x,z,.65+((i*7)%5)*.095,i%4===0?1:0)}
 function pebble(x,z){let o=ball(world,.21,pebbleMat,x,1.95,z);o.scale.y=.38}
 for(let i=0;i<24;i++){let a=i*2.399,r=5.2+((i*7)%19)*.35,x=Math.sin(a)*r,z=Math.cos(a)*r;if(Object.values(positions).some(p=>Math.hypot(p[0]-x,p[1]-z)<3.0))continue;pebble(x,z)}
