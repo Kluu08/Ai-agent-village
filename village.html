@@ -77,7 +77,7 @@ function tree(x,z,s=1,type=0){const t=new THREE.Group();t.position.set(x,1.9,z);
 for(let i=0;i<27;i++){let a=(i*2.39996),r=10.2+(i%5)*.62,x=Math.cos(a)*r,z=Math.sin(a)*r;if(Object.values(positions).some(p=>Math.hypot(p[0]-x,p[1]-z)<3.1))continue;tree(x,z,.65+((i*7)%5)*.095,i%4===0?1:0)}
 function pebble(x,z){let o=ball(world,.21,pebbleMat,x,1.95,z);o.scale.y=.38}
 for(let i=0;i<24;i++){let a=i*2.399,r=5.2+((i*7)%19)*.35,x=Math.sin(a)*r,z=Math.cos(a)*r;if(Object.values(positions).some(p=>Math.hypot(p[0]-x,p[1]-z)<3.0))continue;pebble(x,z)}
-function lampPost(x,z){cyl(world,.06,.07,1.02,woodDark,x,2.38,z,8);ball(world,.15,M("#ffe7ac",.25),x,2.97,z);// Ambient hemispherical lighting substitutes for individual lamp lights}
+function lampPost(x,z){cyl(world,.06,.07,1.02,woodDark,x,2.38,z,8);ball(world,.15,M("#ffe7ac",.25),x,2.97,z);/* Ambient hemispherical lighting substitutes for individual lamp lights. */}
 [[-3,0],[3,0],[0,-3],[0,3]].forEach(([x,z])=>lampPost(x,z));
 function fall(x,z){const w=box(world,1.65,2.7,.075,water,x,-.05,z);w.rotation.x=.12;return w}fall(-9.1,10.3);fall(9.7,9.7);
 const agents=[];function robot(x,z,color,orbit=2){const g=new THREE.Group();world.add(g);const white=M("#e5e8e3"),black=M("#101b25"),accent=M(color);ball(g,.27,white,0,.60,0);ball(g,.46,white,0,1.27,0);ball(g,.36,black,0,1.27,.36);for(let sx of [-1,1]){ball(g,.085,accent,sx*.16,1.32,.69);ball(g,.13,black,sx*.46,1.24,0);ball(g,.18,white,sx*.28,.48,0);ball(g,.10,white,sx*.37,.75,.09);ball(g,.10,white,sx*.12,.20,.07)}
